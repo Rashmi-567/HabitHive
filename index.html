@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker - Build Better Habits & Achieve Your Goals</title>
+    <meta name="description" content="Track your daily habits, maintain streaks, plan with an interactive calendar, and manage exam preparation todos. Build better routines and achieve your goals.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="container">
+                <h1 class="header-title">
+                    <i class="fas fa-chart-line"></i>
+                    Habit Tracker
+                </h1>
+                <p class="header-subtitle">Build Better Habits, Achieve Your Goals</p>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="container">
+                <!-- Stats Overview -->
+                <section class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="totalHabits">0</div>
+                                <div class="stat-label">Active Habits</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="longestStreak">0</div>
+                                <div class="stat-label">Longest Streak</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="todayCompleted">0</div>
+                                <div class="stat-label">Today Completed</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-list-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="todoCount">0</div>
+                                <div class="stat-label">Pending Todos</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Content Grid -->
+                <div class="content-grid">
+                    <!-- Habits Section -->
+                    <section class="habits-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-chart-line"></i>
+                                My Habits
+                            </h2>
+                            <button class="btn btn-primary" onclick="showAddHabitModal()">
+                                <i class="fas fa-plus"></i>
+                                Add Habit
+                            </button>
+                        </div>
+                        <div class="habits-list" id="habitsList">
+                            <!-- Habits will be populated by JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Calendar Section -->
+                    <section class="calendar-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-calendar-alt"></i>
+                                Calendar
+                            </h2>
+                            <div class="calendar-nav">
+                                <button class="btn btn-outline" onclick="previousMonth()">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span class="current-month" id="currentMonth"></span>
+                                <button class="btn btn-outline" onclick="nextMonth()">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="calendar" id="calendar">
+                            <!-- Calendar will be populated by JavaScript -->
+                        </div>
+                        <div class="stickers-panel">
+                            <h3 class="stickers-title">Add Stickers</h3>
+                            <div class="stickers-grid">
+                                <button class="sticker-btn" onclick="selectSticker('🏆')">🏆</button>
+                                <button class="sticker-btn" onclick="selectSticker('🎯')">🎯</button>
+                                <button class="sticker-btn" onclick="selectSticker('⭐')">⭐</button>
+                                <button class="sticker-btn" onclick="selectSticker('🔥')">🔥</button>
+                                <button class="sticker-btn" onclick="selectSticker('💪')">💪</button>
+                                <button class="sticker-btn" onclick="selectSticker('📚')">📚</button>
+                                <button class="sticker-btn" onclick="selectSticker('🎉')">🎉</button>
+                                <button class="sticker-btn" onclick="selectSticker('💼')">💼</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Exam Todos Section -->
+                    <section class="todos-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-graduation-cap"></i>
+                                Exam Preparation
+                            </h2>
+                            <button class="btn btn-primary" onclick="showAddTodoModal()">
+                                <i class="fas fa-plus"></i>
+                                Add Todo
+                            </button>
+                        </div>
+                        <div class="todos-list" id="todosList">
+                            <!-- Todos will be populated by JavaScript -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Habit Modal -->
+    <div class="modal" id="addHabitModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Habit</h3>
+                <button class="modal-close" onclick="closeModal('addHabitModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-body" onsubmit="addHabit(event)">
+                <div class="form-group">
+                    <label for="habitName">Habit Name</label>
+                    <input type="text" id="habitName" required>
+                </div>
+                <div class="form-group">
+                    <label for="habitCategory">Category</label>
+                    <select id="habitCategory">
+                        <option value="health">Health</option>
+                        <option value="productivity">Productivity</option>
+                        <option value="learning">Learning</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="mindfulness">Mindfulness</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('addHabitModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Habit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Todo Modal -->
+    <div class="modal" id="addTodoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Exam Todo</h3>
+                <button class="modal-close" onclick="closeModal('addTodoModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-body" onsubmit="addTodo(event)">
+                <div class="form-group">
+                    <label for="todoTitle">Todo Title</label>
+                    <input type="text" id="todoTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="todoSubject">Subject</label>
+                    <input type="text" id="todoSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="todoDueDate">Due Date</label>
+                    <input type="date" id="todoDueDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="todoPriority">Priority</label>
+                    <select id="todoPriority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('addTodoModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Todo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
