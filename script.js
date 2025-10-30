@@ -143,7 +143,7 @@ function renderHabits() {
                             onclick="toggleHabit(${habit.id})"
                             ${isCompletedToday ? 'disabled' : ''}>
                         <i class="fas fa-check"></i>
-                        ${isCompletedToday ? 'Completed Today' : 'Mark Complete'}
+                        ${isCompletedToday ? 'Done ' : 'Not Done'}
                     </button>
                 </div>
             </div>
