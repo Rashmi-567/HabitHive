@@ -84,7 +84,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #8b9deb);
     color: white;
     font-size: 1.2rem;
 }
@@ -143,7 +143,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #667eea);
     color: white;
 }
 
@@ -163,12 +163,12 @@ body {
 }
 
 .btn-success {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    background: linear-gradient(135deg, #4facfe);
     color: white;
 }
 
 .btn-danger {
-    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    background: linear-gradient(135deg, #ff9a9e);
     color: white;
 }
 
@@ -202,7 +202,7 @@ body {
 }
 
 .habit-category {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #667eea);
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
@@ -295,7 +295,7 @@ body {
 }
 
 .calendar-day.today {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #667eea);
     color: white;
 }
 
@@ -304,7 +304,7 @@ body {
 }
 
 .calendar-day.selected {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    background: linear-gradient(135deg, #4facfe);
     color: white;
 }
 
