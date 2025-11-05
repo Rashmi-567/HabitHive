@@ -9,65 +9,65 @@ let selectedSticker = null;
 // Initialize app
 document.addEventListener('DOMContentLoaded', function() {
     // Load sample data if no existing data
-    if (habits.length === 0) {
-        habits = [
-            {
-                id: 1,
-                name: "Morning Exercise",
-                category: "fitness",
-                streak: 12,
-                completedDates: getLastNDaysCompleted(12, 0.8),
-                lastCompleted: null
-            },
-            {
-                id: 2,
-                name: "Read 30 Minutes",
-                category: "learning",
-                streak: 8,
-                completedDates: getLastNDaysCompleted(8, 0.9),
-                lastCompleted: null
-            },
-            {
-                id: 3,
-                name: "Drink 8 Glasses Water",
-                category: "health",
-                streak: 15,
-                completedDates: getLastNDaysCompleted(15, 0.7),
-                lastCompleted: null
-            }
-        ];
-        saveHabits();
-    }
+    // if (habits.length === 0) {
+    //     habits = [
+    //         {
+    //             id: 1,
+    //             name: "Morning Exercise",
+    //             category: "fitness",
+    //             streak: 12,
+    //             completedDates: getLastNDaysCompleted(12, 0.8),
+    //             lastCompleted: null
+    //         },
+    //         {
+    //             id: 2,
+    //             name: "Read 30 Minutes",
+    //             category: "learning",
+    //             streak: 8,
+    //             completedDates: getLastNDaysCompleted(8, 0.9),
+    //             lastCompleted: null
+    //         },
+    //         {
+    //             id: 3,
+    //             name: "Drink 8 Glasses Water",
+    //             category: "health",
+    //             streak: 15,
+    //             completedDates: getLastNDaysCompleted(15, 0.7),
+    //             lastCompleted: null
+    //         }
+    //     ];
+    //     saveHabits();
+    // }
 
-    if (todos.length === 0) {
-        todos = [
-            {
-                id: 1,
-                title: "Review Calculus Chapter 5",
-                subject: "Mathematics",
-                dueDate: "2024-12-25",
-                priority: "high",
-                completed: false
-            },
-            {
-                id: 2,
-                title: "Complete Physics Lab Report",
-                subject: "Physics",
-                dueDate: "2024-12-20",
-                priority: "medium",
-                completed: false
-            },
-            {
-                id: 3,
-                title: "Study for Chemistry Quiz",
-                subject: "Chemistry",
-                dueDate: "2024-12-18",
-                priority: "high",
-                completed: true
-            }
-        ];
-        saveTodos();
-    }
+    // if (todos.length === 0) {
+    //     todos = [
+    //         {
+    //             id: 1,
+    //             title: "Review Calculus Chapter 5",
+    //             subject: "Mathematics",
+    //             dueDate: "2024-12-25",
+    //             priority: "high",
+    //             completed: false
+    //         },
+    //         {
+    //             id: 2,
+    //             title: "Complete Physics Lab Report",
+    //             subject: "Physics",
+    //             dueDate: "2024-12-20",
+    //             priority: "medium",
+    //             completed: false
+    //         },
+    //         {
+    //             id: 3,
+    //             title: "Study for Chemistry Quiz",
+    //             subject: "Chemistry",
+    //             dueDate: "2024-12-18",
+    //             priority: "high",
+    //             completed: true
+    //         }
+    //     ];
+    //     saveTodos();
+    // }
 
     renderStats();
     renderHabits();
